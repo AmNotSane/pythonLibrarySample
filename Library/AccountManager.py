@@ -46,3 +46,24 @@ class AccountManager():
 		# 	print(f'{account.getUsername()} {account.getName()}')		
 		for account in self.__list:
 			print(f'{account.getUsername()} {account.getName()}')
+	
+		def deleteAccount(self, username='', name=''):
+		for account in self.__list:
+			if name == account.getName() or username == account.getUsername():	
+				self.__list.remove(account)
+				return True
+		print('Error! Account not found!')
+		return False
+	
+	def editAccount(self, username, new_password, name):
+		for account in self.__list:
+			if name == account.getName() and username == account.getUsername():
+				account.setAccount(new_password)
+				return account
+			
+				
+	def authentication(self, username, password):
+		for account in self.__list:
+			if (account.checkAuthentication(username, password)):
+				return account
+		return None
